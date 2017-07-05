@@ -4,7 +4,10 @@ import {ButtonModule} from 'primeng/primeng';
 import { AppComponent } from './app.component';
 import { TableViewComponent } from './component/table-view/table-view.component';
 import { HeaderComponent } from './component/header/header.component';
-
+import {DataTableModule, SharedModule} from 'primeng/primeng';
+import {EmployeeService} from "./service/employee.service";
+import {HttpModule} from "@angular/http";
+import {TableRowService} from "./service/table-row.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -13,9 +16,15 @@ import { HeaderComponent } from './component/header/header.component';
   ],
   imports: [
     BrowserModule,
-    ButtonModule
+    ButtonModule,
+    DataTableModule,
+    SharedModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [
+    EmployeeService,
+    TableRowService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
