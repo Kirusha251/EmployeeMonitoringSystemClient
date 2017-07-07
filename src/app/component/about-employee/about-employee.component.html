@@ -1,0 +1,20 @@
+<div  *ngIf="!isSmallScreen">
+    <p-dropdown class="dropdown" [autoWidth]="false" [options]="dropdownContent" [(ngModel)]="selectedEmployee" placeholder="Выберите работника" [filter]="true"></p-dropdown>
+    <p-calendar placeholder="Выберите дату" [(ngModel)]="selectedDate"  [locale]="ru" dateFormat="dd.mm.yy" ></p-calendar>
+    <button pButton type="button" (click)="onClick()" label="Показать"></button>
+    <input [style.padding]="'5px'" id="in" type="text" size="15" pInputText [(ngModel)]="timeAtWork" [disabled]="true">
+</div>
+
+<div  *ngIf="isSmallScreen">
+  <div class="form-group">
+    <p-dropdown class="dropdown" [autoWidth]="false" [options]="dropdownContent" [(ngModel)]="selectedEmployee" placeholder="Выберите работника" [filter]="true"></p-dropdown>
+  </div>
+  <div class="form-group">
+    <p-calendar placeholder="Выберите дату" [(ngModel)]="selectedDate"  [locale]="ru" dateFormat="dd.mm.yy" ></p-calendar>
+  </div>
+
+  <div class="form-group">
+    <button pButton type="button" (click)="onClick()" label="Показать"></button>
+    <input [style.padding]="'5px'" id="in" type="text" size="15" pInputText [(ngModel)]="timeAtWork" [disabled]="true">
+  </div>
+</div>

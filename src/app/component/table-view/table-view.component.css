@@ -1,3 +1,9 @@
 .table-cell{
 
 }
+.ui-orderlist-list-container{
+  width: 100%;
+}
+.form-group{
+  font-weight: 400;
+}

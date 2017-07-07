@@ -3,9 +3,10 @@ export class TableRow {
   fio: string;
   state: boolean;
   textState: string;
-  lastTimeStateChanged: string;
+  lastTimeStateChanged: Date;
+  filterDate: string;
 
-  constructor(id: number, fio: string, state: boolean, lastTimeStateChanged: string) {
+  constructor(id: number, fio: string, state: boolean, lastTimeStateChanged: Date) {
     this.id = id;
     this.fio = fio;
     this.state = state;
