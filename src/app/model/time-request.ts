@@ -1,9 +1,12 @@
 export class TimeRequest {
   fio: string;
-  date: Date;
-
-  constructor(fio: string, date: Date) {
+  since: Date
+  until: Date;
+  countMode: number;
+  constructor(fio: string, since: Date, until: Date, countMode: number) {
     this.fio = fio;
-    this.date = date;
+    this.since = since;
+    this.until = until;
+    this.countMode = countMode;
   }
 }
