@@ -1,6 +1,11 @@
 <div  *ngIf="!isSmallScreen">
-    <p-dropdown class="dropdown" [autoWidth]="false" [options]="dropdownContent" [(ngModel)]="selectedEmployee" placeholder="Выберите работника" [filter]="true"></p-dropdown>
-    <p-calendar placeholder="Выберите дату" [(ngModel)]="selectedDate"  [locale]="ru" dateFormat="dd.mm.yy" ></p-calendar>
+    <div class="form-group">
+      <p-dropdown class="dropdown" [autoWidth]="false" [options]="dropdownContent" [(ngModel)]="selectedEmployee" placeholder="Выберите работника" [filter]="true"></p-dropdown>
+      <p-dropdown class="dropdown" [autoWidth]="false" [options]="modDropDown" [(ngModel)]="selectedMode" placeholder="Тип выборки" [filter]="true"></p-dropdown>
+      <p-calendar  *ngIf="selectedMode.val===0" placeholder="Выберите дату" [(ngModel)]="sinceDate"  [locale]="ru" dateFormat="dd.mm.yy" ></p-calendar>
+      <p-calendar  *ngIf="selectedMode.val===3" placeholder="от" [(ngModel)]="sinceDate"  [locale]="ru" dateFormat="dd.mm.yy" ></p-calendar>
+      <p-calendar  *ngIf="selectedMode.val===3" placeholder="до" [(ngModel)]="untilDate"  [locale]="ru" dateFormat="dd.mm.yy" ></p-calendar>
+    </div>
     <button pButton type="button" (click)="onClick()" label="Показать"></button>
     <input [style.padding]="'5px'" id="in" type="text" size="15" pInputText [(ngModel)]="timeAtWork" [disabled]="true">
 </div>
@@ -10,7 +15,10 @@
     <p-dropdown class="dropdown" [autoWidth]="false" [options]="dropdownContent" [(ngModel)]="selectedEmployee" placeholder="Выберите работника" [filter]="true"></p-dropdown>
   </div>
   <div class="form-group">
-    <p-calendar placeholder="Выберите дату" [(ngModel)]="selectedDate"  [locale]="ru" dateFormat="dd.mm.yy" ></p-calendar>
+    <p-dropdown class="dropdown" [autoWidth]="false" [options]="modDropDown" [(ngModel)]="selectedMode" placeholder="Тип выборки" [filter]="true"></p-dropdown>
+    <p-calendar *ngIf="selectedMode.val===0" placeholder="Выберите дату" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" [(ngModel)]="since"  [locale]="ru" dateFormat="dd.mm.yy" ></p-calendar>
+    <p-calendar *ngIf="selectedMode.val===3" placeholder="от" [(ngModel)]="sinceDate"  [locale]="ru" dateFormat="dd.mm.yy" ></p-calendar>
+    <p-calendar *ngIf="selectedMode.val===3" placeholder="до" [(ngModel)]="untilDate"  [locale]="ru" dateFormat="dd.mm.yy" ></p-calendar>
   </div>
 
   <div class="form-group">

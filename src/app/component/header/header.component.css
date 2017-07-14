@@ -8,3 +8,8 @@ a.navbar-brand:hover{
   background-color: #337ab7;
   border: none;
 }
+.navbar-right{
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}

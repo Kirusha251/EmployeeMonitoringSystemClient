@@ -1,5 +1,27 @@
 <nav class="navbar navbar-inverse bg-primary">
   <div class="navbar-header">
     <a class="navbar-brand">Monitoring System</a>
+    <div class="pull-right">
+    <p style="color: white;" *ngIf="checkForLogin()" class="navbar-text navbar-right">Вы вошли как
+      <a style="color: white;" class="navbar-link">{{(user !== undefined)? user.username : ""}}</a>
+    </p>
+    <p class="navbar-text navbar-right" *ngIf="checkForLogin()" style="color: white;">
+      <a class="btn btn-info" (click)="showDialog()">
+        <span class="glyphicon glyphicon-log-out"></span> Выйти
+      </a>
+    </p>
+    </div>
   </div>
 </nav>
+
+
+<p-dialog header="Подтверждение действия!" [(visible)]="isDisplay" modal="modal" width="300px">
+  <p>
+    Вы действительно хотите выйти?
+  </p>
+  <p-footer>
+    <button type="button" pButton label="Да" (click)="logout()">
+    </button>
+    <button type="button" pButton label="Нет" (click)="no()"></button>
+  </p-footer>
+</p-dialog>

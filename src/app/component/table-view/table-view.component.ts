@@ -86,11 +86,6 @@ export class TableViewComponent implements OnInit, OnDestroy {
       return 'red';
     }
   }
-  onSelectCalendarInputPrimeng() {
-    // this.tableRows = this.tableRows.filter(row => row.lastTimeStateChanged.getDay().valueOf() === this.dateFilter.get);
-    console.log('select')
-  }
-
   ngOnDestroy(){
     this.alive = false; // switches your IntervalObservable off
   }

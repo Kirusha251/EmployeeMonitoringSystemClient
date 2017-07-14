@@ -13,7 +13,11 @@ import {Observable} from "rxjs/Observable";
 export class AboutEmployeeComponent implements OnInit {
   employees: Employee[];
   dropdownContent: SelectItem[] = [];
+  modDropDown: SelectItem[] = [];
+  selectedMode: any;
   selectedDate: Date;
+  sinceDate: Date;
+  untilDate: Date;
   selectedEmployee: any;
   timeAtWork: string;
   ru: any;
@@ -32,7 +36,13 @@ export class AboutEmployeeComponent implements OnInit {
     }else{
       this.isSmallScreen = false;
     }
-
+    this.modDropDown.push(
+      {label: 'Дата', value: {val: 0}},
+      {label: 'Неделя', value: {val: 1}},
+      {label: 'Месяц', value: {val: 2}},
+      {label: 'Период', value: {val: 3}},
+    );
+    this.selectedMode = {};
     this.selectedEmployee = {};
     this.ru = {
       firstDayOfWeek: 1,
@@ -66,10 +76,13 @@ export class AboutEmployeeComponent implements OnInit {
 
 
   onClick() {
-    this.timeAtWorkService.getTimeAtWorkByFIO(this.selectedEmployee.fio, this.selectedDate)
+    this.timeAtWorkService.getTimeAtWorkByFIO(this.selectedEmployee.fio, this.sinceDate, this.untilDate , this.selectedMode.val)
       .subscribe(data => {
         this.timeAtWork = data;
         console.log(this.timeAtWork);
+      },
+      error => {
+        console.log('Ошибка ' + error.statusCode);
       });
   }
 
